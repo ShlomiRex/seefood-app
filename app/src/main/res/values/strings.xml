@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">seefood</string>
     <string name="let_s_get_started">Let\'s Get Started</string>
+    <string name="touch_to_seefood">Touch to SEEFOOD</string>
 </resources>

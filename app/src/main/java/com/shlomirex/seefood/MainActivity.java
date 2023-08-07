@@ -9,14 +9,16 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-    private View overlayView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        overlayView = findViewById(R.id.overlayView);
+        View overlayView = findViewById(R.id.overlayView);
+        View txt_letsGetStarted = findViewById(R.id.textView_letsGetStarted);
+        View txt_touchToSeeFood = findViewById(R.id.textView_touchToSeeFood);
+
+        txt_touchToSeeFood.setVisibility(View.GONE);
 
         overlayView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -24,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
                 if (overlayView.getVisibility() == View.VISIBLE) {
                     Log.d("Touch", "Overlay is visible, hiding it");
                     overlayView.setVisibility(View.GONE);
+                    txt_letsGetStarted.setVisibility(View.GONE);
+                    txt_touchToSeeFood.setVisibility(View.VISIBLE);
                 }
             }
         });
