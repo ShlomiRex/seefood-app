@@ -46,7 +46,7 @@
         android:text="@string/let_s_get_started"
         android:textColor="@android:color/white"
         android:textSize="40sp"
-        app:outlineWidth="10"
+        app:outlineWidth="1040"
         app:outlineColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,13 +57,23 @@
         android:id="@+id/textView_touchToSeeFood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:outlineWidth="20"
+        app:outlineWidth="1040"
+        app:outlineColor="@color/black"
         android:text="@string/touch_to_seefood"
         android:textColor="@color/white"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <com.shlomirex.seefood.OutlinedButton
+        android:id="@+id/btn_screenshot"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/roundedbutton"
+        app:layout_constraintBottom_toTopOf="@id/textView_touchToSeeFood"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

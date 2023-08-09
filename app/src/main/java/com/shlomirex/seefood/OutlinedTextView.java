@@ -1,10 +1,12 @@
 package com.shlomirex.seefood;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,21 +17,21 @@ public class OutlinedTextView extends androidx.appcompat.widget.AppCompatTextVie
 
     public OutlinedTextView(@NonNull Context context) {
         super(context);
-        init();
     }
 
     public OutlinedTextView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init();
+        init(context, attrs);
     }
 
     public OutlinedTextView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init(context, attrs);
     }
 
-    private void init() {
-        this.outlineColor = Color.BLACK;
-        this.outlineWidth = 20;
+    private void init(Context context, AttributeSet attrs) {
+        this.outlineColor = attrs.getAttributeIntValue(R.attr.outlineColor, Color.BLACK);
+        this.outlineWidth = attrs.getAttributeIntValue(R.attr.outlineWidth, 20);
     }
 
     @Override

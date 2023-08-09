@@ -17,8 +17,10 @@ public class MainActivity extends AppCompatActivity {
         View overlayView = findViewById(R.id.overlayView);
         View txt_letsGetStarted = findViewById(R.id.textView_letsGetStarted);
         View txt_touchToSeeFood = findViewById(R.id.textView_touchToSeeFood);
+        View btn_screenshot = findViewById(R.id.btn_screenshot);
 
         txt_touchToSeeFood.setVisibility(View.GONE);
+        btn_screenshot.setVisibility(View.GONE);
 
         overlayView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
                     overlayView.setVisibility(View.GONE);
                     txt_letsGetStarted.setVisibility(View.GONE);
                     txt_touchToSeeFood.setVisibility(View.VISIBLE);
+                    btn_screenshot.setVisibility(View.VISIBLE);
                 }
             }
         });
