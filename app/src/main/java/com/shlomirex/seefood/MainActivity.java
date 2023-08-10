@@ -1,13 +1,29 @@
 package com.shlomirex.seefood;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+
+import android.hardware.Camera;
+import android.widget.FrameLayout;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final int CAMERA_REQUEST_CODE = 100;
+
+    private Bitmap photo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         View overlayView = findViewById(R.id.overlayView);
         View txt_letsGetStarted = findViewById(R.id.textView_letsGetStarted);
         View txt_touchToSeeFood = findViewById(R.id.textView_touchToSeeFood);
-        View btn_screenshot = findViewById(R.id.btn_screenshot);
+        Button btn_screenshot = findViewById(R.id.btn_screenshot);
 
         txt_touchToSeeFood.setVisibility(View.GONE);
         btn_screenshot.setVisibility(View.GONE);
@@ -34,22 +50,29 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        btn_screenshot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Camera", "Screenshot button clicked");
+
+                // Create the camera_intent ACTION_IMAGE_CAPTURE it will open the camera for capture the image
+                Intent camera_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                // Start the activity with camera_intent, and request pic id
+                startActivityForResult(camera_intent, CAMERA_REQUEST_CODE);
+            }
+        });
     }
-//
-//    @Override
-//    public boolean onTouchEvent(MotionEvent event) {
-//        int action = event.getAction();
-//        switch (action) {
-//            case MotionEvent.ACTION_DOWN:
-//                // User pressed down on the screen
-//                Log.d("Touch", "ACTION_DOWN at x: " + event.getX() + ", y: " + event.getY());
-//                return true;
-//            case MotionEvent.ACTION_UP:
-//                // User released their finger
-//                Log.d("Touch", "ACTION_UP at x: " + event.getX() + ", y: " + event.getY());
-//                return true;
-//            default:
-//                return super.onTouchEvent(event);
-//        }
-//    }
+    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CAMERA_REQUEST_CODE) {
+            Log.d("onActivityResult", "Photo taken");
+            photo = (Bitmap) data.getExtras().get("data");
+        } else {
+            Log.d("onActivityResult", "Photo not taken");
+        }
+    }
 }
