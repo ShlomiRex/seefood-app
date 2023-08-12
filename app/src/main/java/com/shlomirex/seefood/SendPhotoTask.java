@@ -98,9 +98,19 @@ public class SendPhotoTask extends AsyncTask<APIRequestParams, Void, APIResult> 
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
             String line = reader.readLine();
-//            while ((line = reader.readLine()) != null) {
-//                Log.d("sendAPIRequest", line);
-//            }
+
+            if (line.startsWith("{\"is_hotdog\":")) {
+                Log.d("sendAPIRequest", "API server returned valid response");
+                if (line.contains("true")) {
+                    Log.i("sendAPIRequest", "The image is hot dog");
+                } else {
+                    Log.i("sendAPIRequest", "The image is not hot dog");
+                }
+            } else {
+                Log.e("sendAPIRequest", "API server returned invalid response");
+                throw new RuntimeException("API server returned invalid response");
+            }
+
             reader.close();
 
             // Parse result

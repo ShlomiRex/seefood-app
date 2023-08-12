@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    >
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@android:color/background_dark"
+        android:layout_below="@id/title" />
+
+    <include
+        layout="@layout/quote"
+        android:id="@+id/quote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider"/>
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@android:color/background_dark"
+        android:layout_below="@id/quote" />
+
+    <View
+        android:id="@+id/overlayView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#80000000" />
+
+    <com.shlomirex.seefood.OutlinedTextView
+        android:id="@+id/textView_touchToSeeFood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/touch_to_seefood"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:layout_alignParentBottom="true"
+        android:textAlignment="center"/>
+
+    <include
+        layout="@layout/screenshot_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/textView_touchToSeeFood"/>
+
+    <com.shlomirex.seefood.OutlinedTextView
+        android:id="@+id/textView_letsGetStarted"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:shadowRadius="20"
+        android:text="@string/let_s_get_started"
+        android:textColor="@android:color/white"
+        android:textSize="40sp"
+        android:layout_centerInParent="true"
+        android:textAlignment="center"/>
+
+</RelativeLayout>

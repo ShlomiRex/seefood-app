@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
 
         View overlayView = findViewById(R.id.overlayView);
         View txt_letsGetStarted = findViewById(R.id.textView_letsGetStarted);

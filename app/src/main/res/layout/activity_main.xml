@@ -7,12 +7,6 @@
     android:background="@drawable/background"
     tools:context=".MainActivity">
 
-    <FrameLayout
-        android:id="@+id/camera_preview"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -69,14 +63,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <com.shlomirex.seefood.OutlinedButton
-        android:id="@+id/btn_screenshot"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@drawable/roundedbutton"
-        app:layout_constraintBottom_toTopOf="@id/textView_touchToSeeFood"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
