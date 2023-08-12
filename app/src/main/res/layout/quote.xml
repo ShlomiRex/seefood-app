@@ -10,8 +10,9 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="@string/the_shazam_for_food"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:textColor="#FF2D1E"
+        android:textAlignment="center"
         />
 
 </RelativeLayout>

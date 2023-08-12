@@ -8,6 +8,10 @@
         android:id="@+id/hotdog"
         layout="@layout/hotdog" />
 
+    <include
+        android:id="@+id/not_hotdog"
+        layout="@layout/not_hotdog" />
+
     <View
         android:id="@+id/overlayView"
         android:layout_width="match_parent"

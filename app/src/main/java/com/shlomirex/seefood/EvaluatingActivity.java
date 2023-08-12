@@ -53,9 +53,10 @@ public class EvaluatingActivity extends AppCompatActivity {
         View progressBar = findViewById(R.id.progressBar);
         View txtView_eval = findViewById(R.id.textView_evaluating);
         View hotdog = findViewById(R.id.hotdog);
+        View not_hotdog = findViewById(R.id.not_hotdog);
 
         hotdog.setVisibility(View.INVISIBLE);
-
+        not_hotdog.setVisibility(View.INVISIBLE);
 
         // Change the background to the photo
         findViewById(R.id.evaluatingActivity).setBackground(new BitmapDrawable(getResources(), photo));
@@ -83,7 +84,11 @@ public class EvaluatingActivity extends AppCompatActivity {
                         overlay.setVisibility(View.INVISIBLE);
                         progressBar.setVisibility(View.INVISIBLE);
                         txtView_eval.setVisibility(View.INVISIBLE);
-                        hotdog.setVisibility(View.VISIBLE);
+
+                        if (is_hotdog)
+                            hotdog.setVisibility(View.VISIBLE);
+                        else
+                            not_hotdog.setVisibility(View.VISIBLE);
                     }
                 });
             }
