@@ -68,9 +68,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(this.getApplicationContext(), EvaluatingActivity.class);
                 intent.putExtra("photo", photo);
                 startActivity(intent);
-
-                //            // make network calls
-//            new SendPhotoTask().execute(new APIRequestParams(photo, this));
             } else {
                 Log.e("onActivityResult", "Photo is null");
             }

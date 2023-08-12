@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#62E61D">
+
+        <com.shlomirex.seefood.OutlinedTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Hotdog"
+            android:textAlignment="center"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView_hotdog"
+        android:layout_width="172dp"
+        android:layout_height="254dp"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/half_circle" />
+
+    <com.shlomirex.seefood.OutlinedTextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:autoSizeTextType="uniform"
+        android:text="✓︎"
+        android:textColor="@color/white"
+        android:layout_marginTop="80dp"
+        android:textAlignment="center"/>
+
+</RelativeLayout>

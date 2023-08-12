@@ -71,7 +71,6 @@ public class SendPhotoTask extends AsyncTask<APIRequestParams, Void, APIResult> 
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             photo.compress(Bitmap.CompressFormat.JPEG, 100, stream);
             byte[] file_bytes = stream.toByteArray();
-            photo.recycle();
 
             request.write(file_bytes);
             request.writeBytes(this.crlf);
