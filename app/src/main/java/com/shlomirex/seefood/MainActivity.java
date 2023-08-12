@@ -12,13 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.io.DataOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 public class MainActivity extends AppCompatActivity {
 
     private static final int CAMERA_REQUEST_CODE = 100;
@@ -26,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main);
 
         View overlayView = findViewById(R.id.overlayView);
         View txt_letsGetStarted = findViewById(R.id.textView_letsGetStarted);
@@ -68,12 +61,22 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == CAMERA_REQUEST_CODE) {
             Log.d("onActivityResult", "Photo taken");
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
 
-            // make network calls
-            new SendPhotoTask().execute(new APIRequestParams(photo, this));
+            if (data != null && data.getExtras() != null) {
+                Bitmap photo = (Bitmap) data.getExtras().get("data");
+
+                Intent intent = new Intent(this.getApplicationContext(), EvaluatingActivity.class);
+                intent.putExtra("photo", photo);
+                startActivity(intent);
+
+                //            // make network calls
+//            new SendPhotoTask().execute(new APIRequestParams(photo, this));
+            } else {
+                Log.e("onActivityResult", "Photo is null");
+            }
         } else {
-            Log.e("onActivityResult", "Photo not taken");
+            Log.e("onActivityResult", "Invalid request code");
+            Toast.makeText(this, "Internal error", Toast.LENGTH_SHORT).show();
         }
     }
 }
