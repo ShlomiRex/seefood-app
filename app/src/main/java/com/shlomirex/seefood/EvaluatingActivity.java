@@ -1,6 +1,7 @@
 package com.shlomirex.seefood;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,7 +27,7 @@ import java.util.concurrent.Executors;
 
 public class EvaluatingActivity extends AppCompatActivity {
 
-    private String apiServerHost = "192.168.1.107";
+    private String apiServerHost = "192.168.1.104";
     private int apiServerPort = 5000;
 
     private String fileName = "file";
@@ -43,11 +44,11 @@ public class EvaluatingActivity extends AppCompatActivity {
             Log.e("EvaluatingActivity", "No extras in intent");
             Toast.makeText(this, "Internal error", Toast.LENGTH_SHORT).show();
             return;
-        } else if (getIntent().getExtras().get("photo") != null) {
+        } else if (getIntent().getExtras().get("photoPath") != null) {
             Log.d("EvaluatingActivity", "Got photo");
         }
 
-        Bitmap photo = (Bitmap) getIntent().getExtras().get("photo");
+        Bitmap photo = BitmapFactory.decodeFile((String) getIntent().getExtras().get("photoPath"));
 
         View overlay = findViewById(R.id.overlayView);
         View progressBar = findViewById(R.id.progressBar);
@@ -153,7 +154,9 @@ public class EvaluatingActivity extends AppCompatActivity {
 
             if (code != 200) {
                 Log.e("sendAPIRequest", "API server returned code " + code);
-                //Toast.makeText(context, "Internal error", Toast.LENGTH_LONG).show();
+                runOnUiThread(() -> {
+                    Toast.makeText(this, "API server returned code that is not 200 OK", Toast.LENGTH_LONG).show();
+                });
                 throw new RuntimeException("API server returned code " + code);
             }
 
@@ -179,11 +182,15 @@ public class EvaluatingActivity extends AppCompatActivity {
             }
         } catch (MalformedURLException e) {
             Log.e("sendAPIRequest", "Malformed URL, host: " + apiServerHost + ", port: " + apiServerPort + ", file: " + file);
-            Toast.makeText(this, "Internal error", Toast.LENGTH_LONG).show();
+            runOnUiThread(() -> {
+                Toast.makeText(this, "Internal error", Toast.LENGTH_LONG).show();
+            });
             throw new RuntimeException(e);
         } catch (IOException e) {
             Log.e("sendAPIRequest", "Failed to open connection to " + apiServerHost + ":" + apiServerPort + "/" + file);
-            Toast.makeText(this, "Could not connect to API server", Toast.LENGTH_LONG).show();
+            runOnUiThread(() -> {
+                Toast.makeText(this, "Could not connect to API server", Toast.LENGTH_LONG).show();
+            });
             throw new RuntimeException(e);
         }
     }
