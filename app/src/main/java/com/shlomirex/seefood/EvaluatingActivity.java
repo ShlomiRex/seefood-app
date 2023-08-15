@@ -21,13 +21,14 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class EvaluatingActivity extends AppCompatActivity {
 
-    private String apiServerHost = "192.168.1.104";
+    private String apiServerHost = "192.168.1.107";
     private int apiServerPort = 5000;
 
     private String fileName = "file";
@@ -113,8 +114,8 @@ public class EvaluatingActivity extends AppCompatActivity {
             con.setDoOutput(true);
             con.setDoInput(true);
             con.setUseCaches(false);
-            con.setConnectTimeout(5000);
-            con.setReadTimeout(5000);
+            con.setConnectTimeout(10000);
+            con.setReadTimeout(10000);
 
             con.setRequestMethod("POST");
 //            con.setRequestProperty("Content-Type", "image/jpeg");
@@ -184,6 +185,12 @@ public class EvaluatingActivity extends AppCompatActivity {
             Log.e("sendAPIRequest", "Malformed URL, host: " + apiServerHost + ", port: " + apiServerPort + ", file: " + file);
             runOnUiThread(() -> {
                 Toast.makeText(this, "Internal error", Toast.LENGTH_LONG).show();
+            });
+            throw new RuntimeException(e);
+        } catch (SocketTimeoutException e) {
+            Log.e("sendAPIRequest", "Connection timed out");
+            runOnUiThread(() -> {
+                Toast.makeText(this, "Connection timed out", Toast.LENGTH_LONG).show();
             });
             throw new RuntimeException(e);
         } catch (IOException e) {
