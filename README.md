@@ -22,8 +22,10 @@ You can find the `seefood-server` repository [here](https://github.com/ShlomiRex
 
 ![](README-resources/7.png)
 
-Link to youtube video to watch this scene: ![here](https://www.youtube.com/watch?v=vIci3C4JkL0&t=57s).
+Link to youtube video to watch this scene: [here](https://www.youtube.com/watch?v=vIci3C4JkL0).
 
 # My app
 
-https://github.com/ShlomiRex/seefood-app/assets/17744127/21220b7e-111a-46e1-8d12-2c75e680c6c5
+![](README-resources/my_app.gif)
+
+
