@@ -20,6 +20,8 @@ You can find the `seefood-server` repository [here](https://github.com/ShlomiRex
 
 ![](README-resources/6.png)
 
+![](README-resources/7.png)
+
 # My app
 
 
