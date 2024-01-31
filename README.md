@@ -6,6 +6,8 @@ The app is built using Android SDK and Java.
 
 The server that runs the machine learning model is built using Flask and Python.
 
+The server runs ResNet-50 machine learning model.
+
 You can find the `seefood-server` repository [here](https://github.com/ShlomiRex/seefood-server).
 
 ![](README-resources/1.png)
